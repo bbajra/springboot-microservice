@@ -1,11 +1,14 @@
 package com.sbapp.productservice.service;
 
 import com.sbapp.productservice.dto.ProductRequest;
+import com.sbapp.productservice.dto.ProductResponse;
 import com.sbapp.productservice.model.Product;
 import com.sbapp.productservice.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,5 +26,22 @@ public class ProductService {
 
         productRepository.save(product);
         log.info("Product {} is saved", product.getId());
+    }
+
+    public List<ProductResponse> getAllProducts() {
+        List<Product> products = productRepository.findAll();
+
+        //Mapping Product into product response class
+        //Java 8 map function map each product into product response object via funciton
+        return products.stream().map(product -> mapToProductResponse(product)).toList();
+    }
+
+    private ProductResponse mapToProductResponse(Product product) {
+        return ProductResponse.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .description(product.getDescription())
+                .price(product.getPrice())
+                .build();
     }
 }
