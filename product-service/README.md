@@ -23,3 +23,13 @@ spring.data.mongodb.uri=mongodb://localhost:27017/product-service
          "price": 1200
          }
    3. GET: http://localhost:8080/api/product
+
+
+TEST:
+Testing Integration testing, not unit test using testcontainers for junit. It uses dockercontainer and useful for Selenium also.
+https://www.testcontainers.org/modules/databases/mongodb/
+
+We use Junit5 to write the test
+https://www.testcontainers.org/test_framework_integration/junit_5/
+
+Springboot testing crashcourse: https://www.youtube.com/watch?v=aPoJPESMJBk
