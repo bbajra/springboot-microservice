@@ -16,8 +16,9 @@ import java.util.List;
 @AllArgsConstructor
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) // auto ID
     private Long id;
     private String orderNumber;
+    @OneToMany(cascade = CascadeType.ALL) //Order has on to many relation with OrderLineItems
     private List<OrderLineItems> orderLineItemsList;
 }

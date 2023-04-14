@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 @Entity
 @Table(name="t_order_line_items")
 @Getter
@@ -14,7 +17,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrderLineItems {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Incremental auto id as we add items to the list
     private Long id;
-    private
+    private String skuCode;
+    private BigDecimal price;
+    private Integer quantity;
 }
